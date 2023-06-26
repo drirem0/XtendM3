@@ -27,6 +27,7 @@
  *ABF_R_105        20220405  RDRIESSEN   Mods BF0105- Write to extension file EXTCLS as a basis for a Notice of Classification Report
  *ABF_R_105        20220511  KVERCO      Update for XtendM3 review feedback
  *ABF_R_105        20220512  RDRIESSEN   additional lines added to the report 
+ *ABF_R_105        20230626  RDRIESSEN   Fixed summation of detailed lines adding up to no of total bins
  */
 
  import groovy.lang.Closure
@@ -174,6 +175,7 @@
  * deleteEXTCLS - delete existing records with key cono-divi-itno-bref
  */
   def deleteEXTCLS(String cono, String divi, String itno, String bref) {
+   
     
     DBAction queryEXTCLS = database.table("EXTCLS").index("00").selection("EXCONO", "EXDIVI", "EXITNO", "EXBREF").build();
     DBContainer EXTCLS = queryEXTCLS.getContainer();
